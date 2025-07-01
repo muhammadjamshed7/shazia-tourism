@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,65 +8,132 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --primary: #6d28d9;
-            --primary-dark: #4c1d95;
-            --secondary: #f59e0b;
-            --dark: #1e293b;
-            --darker: #0f172a;
-            --light: #f8fafc;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Open+Sans:wght@400;500&display=swap');
         
+        :root {
+            --primary: #5f7161;  /* Sage green */
+            --primary-dark: #3a4a3c;
+            --secondary: #b85c38;  /* Terracotta */
+            --tertiary: #6d8b74;
+            --dark: #2c3636;
+            --darker: #1a2323;
+            --light: #f8f5f2;
+            --accent: #d4af37;  /* Gold */
+            --text-dark: #2d3436;
+            --text-light: #f5f6fa;
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-body: 'Open Sans', sans-serif;
+        }
+
         body {
-            background-color: var(--darker);
-            color: var(--light);
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            background-color: #f9f9f7;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: var(--dark);
+            letter-spacing: -0.02em;
         }
         
         .hero-bg {
-            background-image: linear-gradient(to right, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.7)), 
-                              url('https://images.unsplash.com/photo-1588668214403-6ea2673a3e7d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            min-height: 90vh;
+            position: relative;
+            min-height: 100vh;
             display: flex;
             align-items: center;
+            overflow: hidden;
+            background-color: var(--dark);
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom right, rgba(42, 54, 59, 0.85), rgba(26, 35, 35, 0.9));
+            z-index: 1;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            opacity: 0.9;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            color: var(--text-light);
         }
         
         .package-card {
-            background: linear-gradient(var(--darker), var(--dark));
-            border: 1px solid transparent;
-            border-radius: 16px;
-            background-clip: padding-box;
-            position: relative;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        
-        .package-card::after {
-            content: '';
-            position: absolute;
-            top: -1px; left: -1px; right: -1px; bottom: -1px;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            border-radius: 16px;
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(229, 231, 235, 0.5);
+            perspective: 1000px;
+            transform-style: preserve-3d;
+            will-change: transform;
         }
         
         .package-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transform: translateY(-6px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+            border-color: rgba(212, 175, 55, 0.3);
         }
-        
+
+        .package-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
         .package-card:hover::after {
             opacity: 1;
         }
         
+        .package-card .package-image {
+            transition: transform 0.5s ease;
+        }
+        
+        .package-card:hover .package-image {
+            transform: scale(1.03);
+        }
+        
         .testimonial-card {
-            min-width: 300px;
-            background: linear-gradient(145deg, var(--dark), var(--darker));
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            min-width: 320px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(229, 231, 235, 0.8);
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+            border-color: var(--primary);
         }
         
         .gallery-item {
@@ -122,19 +190,28 @@
         }
         
         nav {
-            backdrop-filter: blur(10px);
-            background-color: rgba(15, 23, 42, 0.8);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            background-color: rgba(95, 113, 97, 0.9);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        nav.scrolled {
+            background-color: rgba(95, 113, 97, 0.98);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
         
         .btn-primary {
-            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            background: linear-gradient(to right, var(--primary), var(--tertiary));
+            color: white;
             transition: all 0.3s ease;
+            border: none;
         }
         
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 12px rgba(109, 139, 116, 0.3);
+            background: linear-gradient(to right, var(--primary-dark), var(--tertiary));
         }
         
         .section-title {
@@ -191,19 +268,23 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-bg text-white px-4 md:px-0">
-        <div class="container mx-auto text-center">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 animate-fadeIn bg-gradient-to-r from-white via-purple-300 to-amber-300 bg-clip-text text-transparent">
-                Discover Pakistan's Majestic North
+    <section id="home" class="hero-bg text-white">
+        <video autoplay muted loop class="hero-video">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-mountain-peak-reflected-in-a-lake-1580-large.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content text-center">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-100 to-amber-300">Curated Journeys</span><br>
+                Through Pakistan's Hidden Wonders
             </h1>
-            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-gray-300">
-                From Skardu's crystal lakes to the fairy meadows under Nanga Parbat, embark on unforgettable journeys.
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-gray-200 font-light leading-relaxed">
+                Where every turn reveals nature's masterpiece - from Skardu's mirror lakes to Nanga Parbat's towering majesty.
             </p>
-            <a href="#packages" class="btn-primary text-white font-bold py-3 px-8 rounded-full inline-block">
-                Book Your Adventure Now <i class="fas fa-arrow-right ml-2"></i>
+            <a href="#packages" class="inline-block bg-transparent border-2 border-amber-400 hover:bg-amber-400/10 text-amber-300 hover:text-white font-medium py-3 px-8 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-amber-400/20">
+                Begin Your Journey <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
             </a>
             <div class="mt-16 animate-bounce">
-                <a href="#packages" class="text-gray-300 hover:text-white">
+                <a href="#packages" class="text-amber-300 hover:text-white">
                     <i class="fas fa-chevron-down text-2xl"></i>
                 </a>
             </div>
@@ -541,6 +622,35 @@
         </div>
     </section>
 
+    <!-- Weather Widget -->
+    <section class="py-12 bg-gradient-to-b from-blue-50 to-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Current Weather Conditions</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                    <h3 class="text-xl font-semibold mb-2">Skardu</h3>
+                    <div class="text-4xl mb-2">☀️</div>
+                    <p class="text-gray-600">18°C / 64°F</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                    <h3 class="text-xl font-semibold mb-2">Naran</h3>
+                    <div class="text-4xl mb-2">⛅</div>
+                    <p class="text-gray-600">15°C / 59°F</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                    <h3 class="text-xl font-semibold mb-2">Fairy Meadows</h3>
+                    <div class="text-4xl mb-2">❄️</div>
+                    <p class="text-gray-600">5°C / 41°F</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                    <h3 class="text-xl font-semibold mb-2">Swat</h3>
+                    <div class="text-4xl mb-2">🌧️</div>
+                    <p class="text-gray-600">12°C / 54°F</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Gallery Section -->
     <section id="gallery" class="py-16 bg-white">
         <div class="container mx-auto px-4">
@@ -772,6 +882,15 @@
     </footer>
 
     <script>
+        // Nav scroll effect
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                document.querySelector('nav').classList.add('scrolled');
+            } else {
+                document.querySelector('nav').classList.remove('scrolled');
+            }
+        });
+
         // Mobile menu toggle
         document.getElementById('menu-toggle').addEventListener('click', function() {
             const menu = document.getElementById('mobile-menu');
