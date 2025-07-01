@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shazia Tourism | Explore Skardu, Fairy Meadows & More | Pakistan Tours</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6d28d9;
+            --primary-dark: #4c1d95;
+            --secondary: #f59e0b;
+            --dark: #1e293b;
+            --darker: #0f172a;
+            --light: #f8fafc;
+        }
+        
+        body {
+            background-color: var(--darker);
+            color: var(--light);
+        }
+        
+        .hero-bg {
+            background-image: linear-gradient(to right, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.7)), 
+                              url('https://images.unsplash.com/photo-1588668214403-6ea2673a3e7d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .package-card {
+            background: linear-gradient(var(--darker), var(--dark));
+            border: 1px solid transparent;
+            border-radius: 16px;
+            background-clip: padding-box;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .package-card::after {
+            content: '';
+            position: absolute;
+            top: -1px; left: -1px; right: -1px; bottom: -1px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 16px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .package-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .package-card:hover::after {
+            opacity: 1;
+        }
+        
+        .testimonial-card {
+            min-width: 300px;
+            background: linear-gradient(145deg, var(--dark), var(--darker));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .gallery-item {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent);
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+        
+        .gallery-item img {
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .whatsapp-widget {
+            animation: pulse 2s infinite;
+            box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+        }
+        
+        @keyframes pulse {
+            0% { 
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); 
+            }
+            70% { 
+                transform: scale(1.1);
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); 
+            }
+            100% { 
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); 
+            }
+        }
+        
+        nav {
+            backdrop-filter: blur(10px);
+            background-color: rgba(15, 23, 42, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <!-- WhatsApp Floating Widget -->
+    <a href="https://wa.me/923499475808?text=Hello,%20I%20want%20more%20info%20about%20your%20tour%20services" 
+       class="fixed bottom-8 right-8 bg-green-500 text-white p-4 rounded-full shadow-lg whatsapp-widget z-50"
+       target="_blank">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-40">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <i class="fas fa-mountain text-2xl text-purple-400 mr-2"></i>
+                <span class="text-xl font-bold bg-gradient-to-r from-purple-400 to-amber-400 bg-clip-text text-transparent">Shazia Tourism</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="text-purple-300 hover:text-white font-medium transition">Home</a>
+                <a href="#packages" class="text-gray-300 hover:text-white transition">Packages</a>
+                <a href="#gallery" class="text-gray-300 hover:text-white transition">Gallery</a>
+                <a href="#about" class="text-gray-300 hover:text-white transition">About</a>
+                <a href="#contact" class="text-gray-300 hover:text-white transition">Contact</a>
+            </div>
+            <button class="md:hidden text-gray-600" id="menu-toggle">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-white w-full px-4 py-2" id="mobile-menu">
+            <a href="#home" class="block py-2 text-gray-600 hover:text-blue-600">Home</a>
+            <a href="#packages" class="block py-2 text-gray-600 hover:text-blue-600">Packages</a>
+            <a href="#gallery" class="block py-2 text-gray-600 hover:text-blue-600">Gallery</a>
+            <a href="#about" class="block py-2 text-gray-600 hover:text-blue-600">About</a>
+            <a href="#contact" class="block py-2 text-gray-600 hover:text-blue-600">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg text-white px-4 md:px-0">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 animate-fadeIn bg-gradient-to-r from-white via-purple-300 to-amber-300 bg-clip-text text-transparent">
+                Discover Pakistan's Majestic North
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-gray-300">
+                From Skardu's crystal lakes to the fairy meadows under Nanga Parbat, embark on unforgettable journeys.
+            </p>
+            <a href="#packages" class="btn-primary text-white font-bold py-3 px-8 rounded-full inline-block">
+                Book Your Adventure Now <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+            <div class="mt-16 animate-bounce">
+                <a href="#packages" class="text-gray-300 hover:text-white">
+                    <i class="fas fa-chevron-down text-2xl"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section id="packages" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Actual Tour Packages</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">Carefully crafted itineraries, trusted local guides, and seamless experiences across Pakistan's breathtaking Northern Areas. All packages are customizable for families, couples, and groups.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Package 1 -->
+                <div class="package-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1588666309990-d68f08e3d4a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=80" 
+                         alt="Skardu Valley Tour - Shazia Tourism" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-gray-800">06-Day Skardu & Bashu Valley Tour</h3>
+                            <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded">Popular</span>
+                        </div>
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-rupee-sign text-blue-600 mr-2"></i>
+                            <span class="font-bold">PKR 32,000 (single) | PKR 72,000 (couple)</span>
+                        </div>
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-gray-700 mb-2">Highlights:</h4>
+                            <ul class="text-gray-600 space-y-1">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Shangrila Resort & Upper Kachura Lake</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Basho Suspension Bridge & K2 Viewpoint</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Shigar Fort & Cold Desert Jeep Safari</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-gray-700 mb-2">Itinerary:</h4>
+                            <ul class="text-gray-600 space-y-1">
+                                <li class="flex items-start">
+                                    <span class="font-medium mr-2">Day 1:</span>
+                                    <span>Lahore → Chilas (night stay)</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="font-medium mr-2">Day 2:</span>
+                                    <span>Arrival Skardu, boat ride at Upper Kachura Lake</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="font-medium mr-2">Day 3:</span>
+                                    <span>Shigar Valley tour, jeep safari Cold Desert</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="font-medium mr-2">Day 4:</span>
+                                    <span>Day trip to Bashu Valley, short hike</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="font-medium mr-2">Day 5:</span>
+                                    <span>Free time Skardu Bazaar, optional local cuisine dinner</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="font-medium mr-2">Day 6:</span>
+                                    <span>Return to Lahore</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <a href="https://wa.me/923499475808?text=Book%2006-Day%20Skardu%20Tour%20Name:%20[Your%20Name]%20Phone:%20[Your%20Number]%20Date:____" 
+                           class="block w-full bg-green-500 hover:bg-green-600 text-white text-center py-2 rounded-md transition duration-300">
+                            <i class="fab fa-whatsapp mr-2"></i> Book via WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Package 2 -->
+                <div class="package-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1889&q=80" 
+                         alt="Naran Babusar Adventure - Shazia Tourism" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">03-Day Naran & Babusar Top</h3>
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-rupee-sign text-blue-600 mr-2"></i>
+                            <span class="font-bold">PKR 18,000 (single) | PKR 39,000 (couple)</span>
+                        </div>
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-gray-700 mb-2">Highlights:</h4>
+                            <ul class="text-gray-600 space-y-1">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Saif-ul-Malook Lake boat ride</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Lulusar Lake & Babusar Top</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Siri Paye meadows</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bg-blue-50 p-3 rounded-md mb-4">
+                            <h4 class="font-semibold text-blue-700 mb-1">Special Offer:</h4>
+                            <p class="text-blue-600">Free rafting at Kunhar River (June-August only).</p>
+                        </div>
+                        <a href="https://wa.me/923499475808?text=Book%2003-Day%20Naran%20Tour%20Name:%20[Your%20Name]%20Phone:%20[Your%20Number]%20Date:____" 
+                           class="block w-full bg-green-500 hover:bg-green-600 text-white text-center py-2 rounded-md transition duration-300">
+                            <i class="fab fa-whatsapp mr-2"></i> Book via WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Package 3 -->
+                <div class="package-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1602002418816-5c0aeef42610?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" 
+                         alt="Kumrat Valley Trek - Shazia Tourism" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">04-Day Kumrat & Katora Lake</h3>
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-rupee-sign text-blue-600 mr-2"></i>
+                            <span class="font-bold">PKR 22,000 (single) | PKR 57,000 (couple)</span>
+                        </div>
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-gray-700 mb-2">Highlights:</h4>
+                            <ul class="text-gray-600 space-y-1">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>5-hour trek to Jahaz Banda meadows</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Stunning photography at Katora Lake</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Stay in scenic wooden cottages</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bg-yellow-50 p-3 rounded-md mb-4">
+                            <h4 class="font-semibold text-yellow-700 mb-1">Packing Tip:</h4>
+                            <p class="text-yellow-600">Trekking boots & warm layers highly recommended.</p>
+                        </div>
+                        <a href="https://wa.me/923499475808?text=Book%2004-Day%20Kumrat%20Tour%20Name:%20[Your%20Name]%20Phone:%20[Your%20Number]%20Date:____" 
+                           class="block w-full bg-green-500 hover:bg-green-600 text-white text-center py-2 rounded-md transition duration-300">
+                            <i class="fab fa-whatsapp mr-2"></i> Book via WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Package 4 -->
+                <div class="package-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1605540436563-5bca919ae766?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1934&q=80" 
+                         alt="Swat Winter Tour - Shazia Tourism" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">03-Day Swat & Malam Jabba</h3>
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-rupee-sign text-blue-600 mr-2"></i>
+                            <span class="font-bold">PKR 25,000 (Winter) including ski gear rental</span>
+                        </div>
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-gray-700 mb-2">Summer Highlights:</h4>
+                            <ul class="text-gray-600 space-y-1">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Chairlift rides</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Zipline adventures</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Lush forest hikes at Malam Jabba</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <a href="https://wa.me/923499475808?text=Book%2003-Day%20Swat%20Tour%20Name:%20[Your%20Name]%20Phone:%20[Your%20Number]%20Date:____" 
+                           class="block w-full bg-green-500 hover:bg-green-600 text-white text-center py-2 rounded-md transition duration-300">
+                            <i class="fab fa-whatsapp mr-2"></i> Book via WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Package 5 -->
+                <div class="package-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1602002418605-4d7c0b1c4d73?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" 
+                         alt="Fairy Meadows Nanga Parbat - Shazia Tourism" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-gray-800">05-Day Fairy Meadows & Nanga Parbat Base</h3>
+                            <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-2.5 py-0.5 rounded">Premium</span>
+                        </div>
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-rupee-sign text-blue-600 mr-2"></i>
+                            <span class="font-bold">PKR 85,000 (private tent with direct mountain view)</span>
+                        </div>
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-gray-700 mb-2">Highlights:</h4>
+                            <ul class="text-gray-600 space-y-1">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Jeep ride through Raikot bridge</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Guided trek (2-hour) to Fairy Meadows</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Stargazing nights with bonfire</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <a href="https://wa.me/923499475808?text=Book%2005-Day%20Fairy%20Meadows%20Tour%20Name:%20[Your%20Name]%20Phone:%20[Your%20Number]%20Date:____" 
+                           class="block w-full bg-green-500 hover:bg-green-600 text-white text-center py-2 rounded-md transition duration-300">
+                            <i class="fab fa-whatsapp mr-2"></i> Book via WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Custom Package Card -->
+                <div class="package-card bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg overflow-hidden shadow-md transition duration-300 flex flex-col justify-center items-center p-8 text-center">
+                    <i class="fas fa-map-marked-alt text-5xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Customize Your Adventure</h3>
+                    <p class="text-gray-600 mb-6">Don't see what you're looking for? We can create a personalized itinerary just for you!</p>
+                    <a href="https://wa.me/923499475808?text=Hello,%20I%20want%20to%20discuss%20a%20custom%20tour%20package" 
+                       class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-md transition duration-300">
+                        Request Custom Package
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">What Our Travelers Say</h2>
+            
+            <div class="relative">
+                <div class="flex overflow-x-auto pb-6 scrollbar-hide space-x-6" id="testimonial-carousel">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card bg-white p-6 rounded-lg shadow-md flex-shrink-0">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 text-blue-600 rounded-full w-10 h-10 flex items-center justify-center">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h4 class="font-bold text-gray-800">Sajjad & Mehwish</h4>
+                                <p class="text-gray-500 text-sm">Karachi</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic mb-4">"This was our dream trip. The views, the arrangements, everything was perfect."</p>
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card bg-white p-6 rounded-lg shadow-md flex-shrink-0">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 text-blue-600 rounded-full w-10 h-10 flex items-center justify-center">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h4 class="font-bold text-gray-800">Adeel</h4>
+                                <p class="text-gray-500 text-sm">Lahore</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic mb-4">"Highly professional team. Loved the cold desert jeep in Skardu."</p>
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card bg-white p-6 rounded-lg shadow-md flex-shrink-0">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 text-blue-600 rounded-full w-10 h-10 flex items-center justify-center">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h4 class="font-bold text-gray-800">Khalid's Family</h4>
+                                <p class="text-gray-500 text-sm">Islamabad</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic mb-4">"Our kids still talk about Fairy Meadows. The bonfire was magical!"</p>
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 4 -->
+                    <div class="testimonial-card bg-white p-6 rounded-lg shadow-md flex-shrink-0">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 text-blue-600 rounded-full w-10 h-10 flex items-center justify-center">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h4 class="font-bold text-gray-800">Hina & friends</h4>
+                                <p class="text-gray-500 text-sm">Multan</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic mb-4">"Affordable prices and reliable service. Already planning Kumrat next year."</p>
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Explore Our Adventures</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="https://images.unsplash.com/photo-1588666309990-d68f08e3d4a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=80" 
+                         alt="Skardu Valley Tour - Shazia Tourism" class="w-full h-64 object-cover">
+                    <div class="p-4 bg-white">
+                        <p class="text-gray-600">Skardu Valley Tour</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1889&q=80" 
+                         alt="Naran Babusar Adventure - Shazia Tourism" class="w-full h-64 object-cover">
+                    <div class="p-4 bg-white">
+                        <p class="text-gray-600">Naran Babusar Adventure</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="https://images.unsplash.com/photo-1602002418605-4d7c0b1c4d73?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" 
+                         alt="Fairy Meadows Nanga Parbat - Shazia Tourism" class="w-full h-64 object-cover">
+                    <div class="p-4 bg-white">
+                        <p class="text-gray-600">Fairy Meadows & Nanga Parbat</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="https://images.unsplash.com/photo-1602002418816-5c0aeef42610?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" 
+                         alt="Kumrat Valley Trek - Shazia Tourism" class="w-full h-64 object-cover">
+                    <div class="p-4 bg-white">
+                        <p class="text-gray-600">Kumrat Valley Trek</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="https://images.unsplash.com/photo-1605540436563-5bca919ae766?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1934&q=80" 
+                         alt="Swat Winter Tour - Shazia Tourism" class="w-full h-64 object-cover">
+                    <div class="p-4 bg-white">
+                        <p class="text-gray-600">Swat Winter Tour</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="https://images.unsplash.com/photo-1602002418605-4d7c0b1c4d73?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" 
+                         alt="Fairy Meadows Nanga Parbat - Shazia Tourism" class="w-full h-64 object-cover">
+                    <div class="p-4 bg-white">
+                        <p class="text-gray-600">Fairy Meadows Camping</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">About Shazia Tourism</h2>
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex flex-col md:flex-row items-center mb-8">
+                        <div class="md:w-1/3 mb-6 md:mb-0">
+                            <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                                 alt="Shazia Tourism Team" class="rounded-lg shadow-md w-full">
+                        </div>
+                        <div class="md:w-2/3 md:pl-8">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4">Passion for Pakistan's hidden beauty.</h3>
+                            <p class="text-gray-600 mb-4">At Shazia Tourism, we're a family-owned agency with 15+ years of experience organizing secure, comfortable, and memorable trips across Pakistan's Northern Areas.</p>
+                            <p class="text-gray-600">From newlyweds to adventure groups, we customize every trip with your safety and joy in mind.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                        <div class="bg-blue-50 p-6 rounded-lg text-center">
+                            <i class="fas fa-map-marked-alt text-4xl text-blue-600 mb-4"></i>
+                            <h4 class="font-bold text-gray-800 mb-2">Expert Guides</h4>
+                            <p class="text-gray-600">Our local guides know every hidden gem and safest route.</p>
+                        </div>
+                        <div class="bg-green-50 p-6 rounded-lg text-center">
+                            <i class="fas fa-heart text-4xl text-green-600 mb-4"></i>
+                            <h4 class="font-bold text-gray-800 mb-2">Personalized Service</h4>
+                            <p class="text-gray-600">We tailor each trip to your preferences and comfort level.</p>
+                        </div>
+                        <div class="bg-yellow-50 p-6 rounded-lg text-center">
+                            <i class="fas fa-shield-alt text-4xl text-yellow-600 mb-4"></i>
+                            <h4 class="font-bold text-gray-800 mb-2">Safety First</h4>
+                            <p class="text-gray-600">Verified accommodations, reliable transport, and emergency plans.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Get In Touch</h2>
+            
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-gray-50 p-8 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-gray-800 mb-6">Contact Information</h3>
+                    
+                    <div class="flex items-start mb-6">
+                        <div class="bg-blue-100 text-blue-600 rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-semibold text-gray-800">WhatsApp / Call</h4>
+                            <a href="tel:+923499475808" class="text-blue-600 hover:underline">+92 349 9475808</a>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start mb-6">
+                        <div class="bg-blue-100 text-blue-600 rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-semibold text-gray-800">Email</h4>
+                            <a href="mailto:info@shaziatourism.pk" class="text-blue-600 hover:underline">info@shaziatourism.pk</a>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="bg-blue-100 text-blue-600 rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-semibold text-gray-800">Lahore Office</h4>
+                            <p class="text-gray-600">[Address line]</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-semibold text-gray-800 mb-2">Payment Methods</h4>
+                        <p class="text-gray-600 mb-2">JazzCash: 0322-4318094</p>
+                        <p class="text-gray-600">Bank transfers available</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-gray-800 mb-6">Send Us a Message</h3>
+                    <form>
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div class="mb-4">
+                            <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Your Message</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                        </div>
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-md transition duration-300 w-full">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-mountain text-2xl text-blue-400 mr-2"></i>
+                        <span class="text-xl font-bold">Shazia Tourism</span>
+                    </div>
+                    <p class="text-gray-400">Discover Pakistan's majestic north with our expert guides and personalized tours.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="#packages" class="text-gray-400 hover:text-white transition">Tour Packages</a></li>
+                        <li><a href="#gallery" class="text-gray-400 hover:text-white transition">Gallery</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Popular Tours</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Skardu Valley</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Fairy Meadows</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Naran Babusar</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Kumrat Valley</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Swat Valley</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Cancellation Policy</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <span class="font-medium mr-2">7+ days:</span>
+                            <span>50% refund</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="font-medium mr-2">3 days:</span>
+                            <span>30% refund</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="font-medium mr-2">&lt;3 days:</span>
+                            <span>No refund</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 Shazia Tourism. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Testimonial carousel auto-scroll
+        const carousel = document.getElementById('testimonial-carousel');
+        let scrollPosition = 0;
+        const scrollWidth = carousel.scrollWidth - carousel.clientWidth;
+
+        function autoScroll() {
+            if (scrollPosition < scrollWidth) {
+                scrollPosition += 300;
+            } else {
+                scrollPosition = 0;
+            }
+            carousel.scrollTo({
+                left: scrollPosition,
+                behavior: 'smooth'
+            });
+        }
+
+        // Auto-scroll every 5 seconds
+        setInterval(autoScroll, 5000);
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
